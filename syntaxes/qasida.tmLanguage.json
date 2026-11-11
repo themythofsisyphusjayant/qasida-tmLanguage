@@ -1,0 +1,176 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "fileTypes": [
+    "fg"
+  ],
+  "name": "Qasida",
+  "patterns": [
+    {
+      "begin": "/\\*",
+      "end": "\\*/",
+      "name": "comment.block.qasida"
+    },
+    {
+      "match": "//.*$",
+      "name": "comment.line.double-slash.qasida"
+    },
+    {
+      "begin": "\"",
+      "end": "\"",
+      "name": "string.quoted.double.qasida",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.qasida"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.control.qasida"
+        },
+        "2": {
+          "name": "keyword.control.qasida"
+        },
+        "3": {
+          "name": "entity.name.function.qasida"
+        }
+      },
+      "match": "\\b(extern)\\s+(fn)\\s+([A-Za-z_][A-Za-z0-9_]*)"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.control.qasida"
+        },
+        "2": {
+          "name": "entity.name.function.qasida"
+        }
+      },
+      "match": "\\b(fn)\\s+([A-Za-z_][A-Za-z0-9_]*)"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.control.qasida"
+        },
+        "2": {
+          "name": "entity.name.type.qasida"
+        }
+      },
+      "match": "\\b(struct|enum)\\s+([A-Za-z_][A-Za-z0-9_]*)"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.control.qasida"
+        },
+        "2": {
+          "name": "entity.name.type.qasida"
+        }
+      },
+      "match": "\\b(trait)\\s+([A-Za-z_][A-Za-z0-9_]*)"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.control.qasida"
+        },
+        "2": {
+          "name": "entity.name.type.qasida"
+        },
+        "3": {
+          "name": "keyword.control.qasida"
+        },
+        "4": {
+          "name": "entity.name.type.qasida"
+        }
+      },
+      "match": "\\b(impl)\\s+(?:([A-Za-z_][A-Za-z0-9_]*)\\s+(for)\\s+)?([A-Za-z_][A-Za-z0-9_]*)"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.control.qasida"
+        },
+        "2": {
+          "name": "entity.name.type.qasida"
+        }
+      },
+      "match": "\\b(type|newtype)\\s+([A-Za-z_][A-Za-z0-9_]*)"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.control.qasida"
+        }
+      },
+      "match": "\\b(scope)(?=\\s*\\{)"
+    },
+    {
+      "match": "\\b(true|false)\\b",
+      "name": "constant.language.qasida"
+    },
+    {
+      "match": "(?<![A-Za-z0-9_])_(?![A-Za-z0-9_])",
+      "name": "constant.language.qasida"
+    },
+    {
+      "match": "\\b(fn|let|mut|if|else|while|for|in|return|import|as|struct|enum|match|spawn|extern|break|continue|trait|impl|type|newtype|opaque|readonly|defer)\\b",
+      "name": "keyword.control.qasida"
+    },
+    {
+      "match": "\\b(int|float|bool|str|range|i8|i16|i32|i64|u8|u16|u32|u64|never|void|Option|Result)\\b",
+      "name": "storage.type.qasida"
+    },
+    {
+      "match": "\\b(print|println|push|pin|fail|assert|poke32|mmap_set|mmap_close|mmap_set32|csr_write|csr_set|csr_clear|fail_compile|eprintln|len|range|clock_micros|sqrt|exp|log|pow|abs|wrapping_add|wrapping_sub|wrapping_mul|wrapping_neg|read_file|read_line|write_file|read_bytes|write_bytes|file_exists|args|parse_int|parse_float|run_command|try_alloc|split|join|substr|trim|starts_with|ends_with|http_get|http_listen|http_accept|http_read_request|http_respond|http_respond_status|http_close|alloc_count|free_count|parallel_dot|parallel_matmul|arr_alloc_count|arr_free_count|refcount|weak_new|weak_upgrade|move|mmap_open|mmap_get|mmap_grow|mmap_get32|peek32|csr_read|ecall|ecall3)\\b",
+      "name": "support.function.qasida"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "entity.name.function.qasida"
+        },
+        "2": {
+          "name": "punctuation.qasida"
+        }
+      },
+      "match": "([A-Za-z_][A-Za-z0-9_]*)\\s*(\\()"
+    },
+    {
+      "match": "\\b0[xX][0-9a-fA-F_]+\\b",
+      "name": "constant.numeric.hex.qasida"
+    },
+    {
+      "match": "\\b0[bB][01_]+\\b",
+      "name": "constant.numeric.binary.qasida"
+    },
+    {
+      "match": "\\b0[oO][0-7_]+\\b",
+      "name": "constant.numeric.octal.qasida"
+    },
+    {
+      "match": "\\b\\d[\\d_]*\\.\\d[\\d_]*([eE][+-]?\\d+)?\\b|\\b\\d[\\d_]*[eE][+-]?\\d+\\b",
+      "name": "constant.numeric.float.qasida"
+    },
+    {
+      "match": "\\b\\d[\\d_]*\\b",
+      "name": "constant.numeric.integer.qasida"
+    },
+    {
+      "match": "(==|!=|<=|>=|&&|\\|\\||->|=>|<<|>>|\\.\\.|[+\\-*/%<>=!?:&|^~])",
+      "name": "keyword.operator.qasida"
+    },
+    {
+      "match": "[;,.]",
+      "name": "punctuation.qasida"
+    },
+    {
+      "match": "[\\{\\}\\[\\]\\(\\)]",
+      "name": "punctuation.qasida"
+    }
+  ],
+  "scopeName": "source.qasida"
+}
