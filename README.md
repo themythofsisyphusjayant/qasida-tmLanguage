@@ -16,6 +16,16 @@ Qasida on GitHub.
   form Linguist's `script/add-grammar` reads)
 - `language-configuration.json` — brackets, comments, auto-closing pairs
 
+```mermaid
+flowchart LR
+    FG[".fg source file"] --> VS["VS Code<br/>opens .fg as Qasida"]
+    VS --> GR["syntaxes/qasida.tmLanguage.json<br/>24 top-level patterns"]
+    GR --> SC["Scopes assigned<br/>keyword.control, string.quoted,<br/>entity.name.function, ..."]
+    SC --> TH["Editor theme<br/>colours each scope"]
+    LC["language-configuration.json<br/>brackets, comments,<br/>auto-closing pairs"] -. "editor behaviour" .-> VS
+    GR -. "vendored by" .-> LI["github/linguist<br/>GitHub syntax highlighting"]
+```
+
 ## Coverage
 
 The grammar matches the Qasida v2.0.0 lexer: all 27 keywords (`fn let mut
